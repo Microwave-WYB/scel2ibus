@@ -75,8 +75,8 @@ class WordGroup:
     """词组信息"""
 
     same: int  # 同音词数量
-    py_table_len: int  # 拼音索引表长度
-    py_table: List[int]  # 拼音索引表
+    py_indices_len: int  # 拼音索引表长度
+    py_indices: List[int]  # 拼音索引表
     words: List[Word]  # 同音词组列表
 
 
@@ -121,7 +121,7 @@ class Scel:
         word_info_list = []
         for word_group in self.word_table:
             pinyin = get_word_pinyin(
-                struct.pack(f"<{len(word_group.py_table)}H", *word_group.py_table),
+                struct.pack(f"<{len(word_group.py_indices)}H", *word_group.py_indices),
                 self.pinyin_table,
             )
             for word in word_group.words:
