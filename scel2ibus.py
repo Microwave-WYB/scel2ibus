@@ -211,7 +211,6 @@ def get_word_pinyin(data: bytes, py_table: PinyinTable) -> str:
     Returns:
         str: 词组拼音
     """
-    # remember each index is 2 bytes
     indices = struct.unpack(f"<{len(data) // 2}H", data)
     return "'".join(py_table.pinyin_list[i].pinyin for i in indices)
 
